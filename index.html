@@ -2,13 +2,38 @@
     <script src="p5.min.js"></script>
     <script src="p5.dom.min.js"></script>
     <script src="p5.sound.min.js"></script>
+    <script type="text/javascript" src="../assets/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="../assets/pd-fileutils.js"></script>
+    <script type="text/javascript" src="/webpd-latest.min.js"></script>
+    <script type="text/javascript" src="../assets/examples.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
 
   </head>
-  <body>
-    <script src="sketch.js"></script>
+  <body >
+    <button id="startButton">Start</button>
+    <div id="myCanvas" style="width: 100% !important;">
+      <script src="sketch.js"></script>
+    </div>
+    
   
+    <script type="text/javascript">
+      
+      webPdExamples.init()
 
+      $('form').submit(function(event) {
+        event.preventDefault()
+        Pd.send('freq', [parseFloat($(x1).val())])
+      })
+
+      var patch
+      $.get('pd/main.pd', function(mainStr) {
+        // Loading the patch
+        patch = Pd.loadPatch(mainStr)
+
+        webPdExamples.patchLoaded(mainStr)
+      })
+
+    </script>
 </body></html>
