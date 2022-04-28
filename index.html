@@ -17,23 +17,5 @@
       <script src="sketch.js"></script>
     </div>
     
-  
-    <script type="text/javascript">
-      
-      webPdExamples.init()
 
-      $('form').submit(function(event) {
-        event.preventDefault()
-        Pd.send('freq', [parseFloat($(x1).val())])
-      })
-
-      var patch
-      $.get('pd/main.pd', function(mainStr) {
-        // Loading the patch
-        patch = Pd.loadPatch(mainStr)
-
-        webPdExamples.patchLoaded(mainStr)
-      })
-
-    </script>
 </body></html>

@@ -7,25 +7,29 @@ function setup() {
   // set canvas to window size
 
 var width = myCanvas.offsetWidth;
- var sketchCanvas = createCanvas(width,700, WEBGL);
+ var sketchCanvas = createCanvas(width,700);
  sketchCanvas.parent("myCanvas");
 }
 
 function draw() {
-  background('beige');
+  // background('beige');
+  fill(245,245,220,50)
+  rect(0,0,width,height);
 
-  fill('blue');
+ 
   if (touches.length<3){
    
   for (var i = 0; i < touches.length; i++) {
+    fill('blue');
     noStroke();
-    ellipse(touches[i].x-width/2, touches[i].y-height/2, 50, 50);
+    ellipse(touches[i].x, touches[i].y, 50, 50);
   }
   }
   else{
     for (var i = 0; i < 2; i++) {
-    noStroke();
-    ellipse(touches[i].x-width/2, touches[i].y-height/2, 50, 50);
+      fill('blue');
+      noStroke();
+    ellipse(touches[i].x, touches[i].y, 50, 50);
   }
   }
 
@@ -36,8 +40,9 @@ function draw() {
   else{
     noneFlag = 1;
   }
-  textSize(50);
-  text(x1, 10, 10, 70, 80);
+  Pd.send('freq',[parseFloat(x1)])
+
+
 }
 
 // do this prevent default touch interaction
@@ -48,3 +53,14 @@ function mousePressed() {
 document.addEventListener('gesturestart', function(e) {
   e.preventDefault();
 });
+
+     webPdExamples.init()
+
+
+      var patch
+      $.get('pd/main.pd', function(mainStr) {
+        // Loading the patch
+        patch = Pd.loadPatch(mainStr)
+
+        webPdExamples.patchLoaded(mainStr)
+      })
