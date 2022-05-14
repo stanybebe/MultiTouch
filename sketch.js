@@ -126,7 +126,7 @@ else{
 
 
 
-  var mapD = mapRange([0,50],[1,200],d);
+  var mapD = mapRange([0,3000],[1,200],d);
   var x1m = mapRange ([0,width],[0,9000],x1);
   var x2m = mapRange ([0,width],[0,9000],x2);
 
