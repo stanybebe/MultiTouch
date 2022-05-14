@@ -20,7 +20,7 @@ var mapRange = function(from, to, s) {
 };
 // d = √[(x2 − x1)2 + (y2 − y1)2]
 var distance = function(x1,y1,x2,y2){
-  return sqrt((x2-x1)*2+((y2-y1)*2));
+  return sqrt(abs(x2-x1)*2+(abs(y2-y1)*2));
 }
 function draw() {
   
