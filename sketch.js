@@ -46,7 +46,7 @@ background(255);
     
   }
   }
-
+  // get 1 touch xy and set flag to playing
   if (touches.length>0){
 
       x1 = touches[0].x;
@@ -54,12 +54,13 @@ background(255);
       noneFlag = 0;
     
   }
+  //turn off both playing flags
   else{
 
     noneFlag = 1;
     noneFlag2 = 1;
   }
-
+ //  get 2nd touch xy and set flag to playing, start calculating distance
   if (touches.length>1){
 
       x2 = touches[1].x;
@@ -68,19 +69,20 @@ background(255);
       var d = distance(touches[0].x,touches[0].y,touches[1].x,touches[1].y);
   }
 
-
+//if touch 3 happens last one touched is the second cursor
   if (touches.length>2){
     x2 = touches[touches.length-1].x;
     y2 = touches[touches.length-1].y;
     noneFlag2 = 0;
 }
-
+//make sure 2nd touch is off if no touches
   if (touches.length==0){
     // noneFlag = 1;
      noneFlag2 = 1;
 
     
 }
+//start sizeA fading variable on 1st touch 
 if (noneFlag==0){
   sizeA=sizeA+2;
      
@@ -98,10 +100,14 @@ else{
     strokeWeight(1);
     ellipse(x1, y1, sizeA, sizeA);
 }
+
+//draw line if two touches
 if(noneFlag==0&&noneFlag2==0){
   stroke(0,0,0, sizeB);
   line(x1, y1, x2, y2);
   }
+
+ //start sizeB fading variable on 2nd touch  
 if (noneFlag2==0){
   
   
