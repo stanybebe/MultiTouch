@@ -6,7 +6,7 @@ var noneFlag = 0;
 var noneFlag2 = 0;
 var sizeA = 0;
 var sizeB = 0;
-
+var d = 0;
 
 function setup() {
   // set canvas to window size
@@ -66,7 +66,7 @@ background(255);
       x2 = touches[1].x;
       y2 = touches[1].y;
       noneFlag2 = 0;
-      var d = distance(touches[0].x,touches[0].y,touches[1].x,touches[1].y);
+       d = distance(touches[0].x,touches[0].y,touches[1].x,touches[1].y);
   }
 
 //if touch 3 happens last one touched is the second cursor
